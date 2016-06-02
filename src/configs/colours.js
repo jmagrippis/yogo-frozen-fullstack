@@ -1,6 +1,8 @@
 const colours = {
   primary: '#E91E63',
-  accent: '#00BCD4'
+  primaryLight: '#F8BBD0',
+  accent: '#00BCD4',
+  white: '#FFFFFF'
 }
 
 export default colours

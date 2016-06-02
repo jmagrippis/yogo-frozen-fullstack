@@ -8,8 +8,12 @@ class <%= pascalEntityName %> extends React.Component {
   }
 
   render () {
-    { className, title }
-    return <div className={className}>{title}</div>
+    let { className, title } = this.props
+    return (
+      <div className={className}>
+        {title}
+      </div>
+    )
   }
 }
 

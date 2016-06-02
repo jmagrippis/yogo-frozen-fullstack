@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
+import Header from 'components/Header'
 import Hero from 'components/Hero'
 
 const styles = StyleSheet.create({
@@ -15,11 +16,19 @@ const styles = StyleSheet.create({
   }
 })
 
+const navLinks = {
+  en: [
+    { label: 'Pick!', location: '#pick' },
+    { label: 'About', location: '#about' },
+    { label: 'Contact', location: '#contact' }
+  ]
+}
+
 class App extends Component {
   render () {
     return (
       <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
-        <header>This is our header!</header>
+        <Header brand={'Yogo Frozen'} links={navLinks.en} />
         <Hero title={'Create something wonderful!'} />
         <footer>This is our footer!</footer>
       </div>
