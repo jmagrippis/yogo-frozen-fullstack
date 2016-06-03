@@ -16,6 +16,7 @@
   "dependencies": {
     "aphrodite": "^0.3.0",
     "immutable": "^3.0.0",
+    "lodash": "^4.0.0",
     "material-ui": "^0.15.0",
     "react": "^15.0.0",
     "react-addons-pure-render-mixin": "^15.0.0",
@@ -70,7 +71,8 @@
     ],
     "globals": [
       "describe",
-      "it"
+      "it",
+      "localStorage"
     ],
     "parser": "babel-eslint"
   },
