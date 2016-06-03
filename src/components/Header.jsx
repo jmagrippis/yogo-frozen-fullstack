@@ -50,8 +50,8 @@ class Header extends React.Component {
       <header className={css(styles.container) + (className ? ' ' + className : '')}>
         <a className={css(styles.whiteText, styles.brand)} href='/'>{brand}</a>
         <ul className={css(styles.list)}>
-          {links.map((link) => (
-            <li><a className={css(styles.listItem, styles.whiteText)} href={link.location}>{link.label}</a></li>
+          {links.map((link, key) => (
+            <li key={key}><a className={css(styles.listItem, styles.whiteText)} href={link.location}>{link.label}</a></li>
           ))}
         </ul>
       </header>

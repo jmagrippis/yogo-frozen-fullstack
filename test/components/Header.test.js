@@ -42,7 +42,7 @@ describe('(Component) Header', () => {
         { label: '2nd time', location: '#2nd-time' },
         { label: 'Third placed', location: '/third-placed' },
         { label: 'fourth', location: '#fourth' },
-        { label: 'fifth', location: '#fifth' },
+        { label: 'fifth', location: '#fifth' }
       ]
     }
     wrapper = shallow(<Header {...data} />)

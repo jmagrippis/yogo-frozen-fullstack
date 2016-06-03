@@ -1,13 +1,9 @@
 import { combineReducers } from 'redux'
 
-const defaultState = {}
-
-const sampleReducer = (state = defaultState, action) => {
-  return state
-}
+import locale from 'reducers/locale'
 
 const rootReducer = combineReducers({
-  sampleReducer
+  locale
 })
 
 export default rootReducer

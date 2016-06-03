@@ -4,12 +4,10 @@ import { Map } from 'immutable'
 export const ACTION_NAME = 'ACTION_NAME'
 
 // Action Creators
-export const setActionName = (action) => {
-  return {
-    type: ACTION_NAME,
-    action
-  }
-}
+export const setActionName = (action) => ({
+  type: ACTION_NAME,
+  action
+})
 
 // Reducer
 export const defaultState = Map({
