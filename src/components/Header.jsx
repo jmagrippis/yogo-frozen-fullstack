@@ -1,35 +1,25 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { StyleSheet, css } from 'aphrodite'
+import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton'
+import Inbox from 'material-ui/svg-icons/content/inbox'
+import { cyan50, cyan100 } from 'material-ui/styles/colors'
 
-import colours from 'configs/colours'
-import shadows from 'configs/shadows'
+import HeaderLinks from 'components/HeaderLinks'
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: colours.primary,
-    padding: '1rem',
-    fontSize: '1.25rem',
-    boxShadow: shadows.z2
-  },
   list: {
     display: 'flex',
     listStyle: 'none',
-    margin: 0,
+    margin: '.35rem 0 0',
     padding: 0
   },
-  listItem: {
-    padding: '0 .5rem',
-    textDecoration: 'none'
-  },
-  whiteText: {
-    color: colours.white,
+  altHoverText: {
+    color: cyan50,
     transition: '0.25s color ease-in',
     ':hover': {
-      color: colours.primaryLight
+      color: cyan100
     }
   },
   brand: {
@@ -45,16 +35,15 @@ class Header extends React.Component {
   }
 
   render () {
-    let { className, brand, links } = this.props
+    let { className, brand, links, locale, changeLanguage } = this.props
     return (
-      <header className={css(styles.container) + (className ? ' ' + className : '')}>
-        <a className={css(styles.whiteText, styles.brand)} href='/'>{brand}</a>
-        <ul className={css(styles.list)}>
-          {links.map((link, key) => (
-            <li key={key}><a className={css(styles.listItem, styles.whiteText)} href={link.location}>{link.label}</a></li>
-          ))}
-        </ul>
-      </header>
+      <AppBar
+        className={className}
+        zDepth={3}
+        title={<a href={'#'} className={css(styles.brand, styles.altHoverText)}>{brand}</a>}
+        iconElementLeft={<IconButton><Inbox /></IconButton>}
+        iconElementRight={<HeaderLinks className={css(styles.list)} links={links} locale={locale} changeLanguage={changeLanguage} />}
+      />
     )
   }
 }
@@ -62,7 +51,9 @@ class Header extends React.Component {
 Header.propTypes = {
   className: PropTypes.string,
   brand: PropTypes.string.isRequired,
-  links: PropTypes.array.isRequired
+  links: PropTypes.array.isRequired,
+  locale: PropTypes.string.isRequired,
+  changeLanguage: PropTypes.func.isRequired
 }
 
 export default Header

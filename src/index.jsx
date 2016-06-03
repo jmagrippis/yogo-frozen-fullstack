@@ -2,10 +2,14 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 import 'normalize.css'
 
 import configureStore from 'store/configureStore'
 import Root from 'layouts/Root'
+import 'styles/main.css'
+
+injectTapEventPlugin()
 
 const store = configureStore()
 

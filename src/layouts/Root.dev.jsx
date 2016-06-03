@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
 
-import App from 'layouts/App'
+import ConnectedApp from 'containers/ConnectedApp'
 import DevTools from 'layouts/DevTools'
 
 export default class Root extends Component {
@@ -10,7 +10,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <div>
-          <App />
+          <ConnectedApp />
           <DevTools />
         </div>
       </Provider>
