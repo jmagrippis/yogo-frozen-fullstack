@@ -10,6 +10,7 @@ white, fullBlack
 
 import Header from 'components/Header'
 import Hero from 'components/Hero'
+import MakeYourFroyo from 'components/MakeYourFroyo'
 import ShopMap from 'components/ShopMap'
 
 const fontFamily = '"Fira Sans", -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", "segoe ui", arial, sans-serif'
@@ -45,7 +46,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { links, changeLanguage, locale } = this.props
+    let { links, steps, changeLanguage, locale, activeStep, nextStep, prevStep } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -59,6 +60,12 @@ class App extends Component {
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
           <Header brand={'Yogo Frozen'} links={links} changeLanguage={changeLanguage} locale={locale} />
           <Hero title={'Create something wonderful!'} />
+          <MakeYourFroyo
+            steps={steps}
+            activeStep={activeStep}
+            nextStep={nextStep}
+            prevStep={prevStep}
+          />
           <ShopMap className={css(styles.map)} {...mapData} />
           <footer>This is our footer!</footer>
         </div>
@@ -70,11 +77,15 @@ class App extends Component {
 App.PropTypes = {
   links: PropTypes.array.isRequired,
   changeLanguage: PropTypes.func.isRequired,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  activeStep: PropTypes.number,
+  nextStep: PropTypes.func.isRequired,
+  prevStep: PropTypes.func.isRequired
 }
 
 App.defaultProps = {
-  locale: 'en'
+  locale: 'en',
+  activeStep: 0
 }
 
 export default App
