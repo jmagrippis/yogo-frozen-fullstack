@@ -12,7 +12,7 @@ class ShopMap extends React.Component {
         hostname={"maps.googleapis.com"}
         pathname={"/maps/api/js"}
         query={{ libraries: 'geometry,drawing,places', key: 'AIzaSyDnX9B4SZbbgRTbMYhf7rSq1VNAAU9gqKc' }}
-        loadingElement={<CircularProgress />}
+        loadingElement={<CircularProgress style={{ margin: '0 auto' }} />}
         containerElement={<section className={className} />}
         googleMapElement={
           <GoogleMap
