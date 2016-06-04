@@ -46,7 +46,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { links, steps, changeLanguage, locale, activeStep, nextStep, prevStep } = this.props
+    let { steps, changeLanguage, locale, activeStep, nextStep, prevStep } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -58,13 +58,14 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
-          <Header brand={'Yogo Frozen'} links={links} changeLanguage={changeLanguage} locale={locale} />
+          <Header brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} />
           <Hero title={'Create something wonderful!'} />
           <MakeYourFroyo
             steps={steps}
             activeStep={activeStep}
             nextStep={nextStep}
             prevStep={prevStep}
+            locale={locale}
           />
           <ShopMap className={css(styles.map)} {...mapData} />
           <footer>This is our footer!</footer>
@@ -75,7 +76,6 @@ class App extends Component {
 }
 
 App.PropTypes = {
-  links: PropTypes.array.isRequired,
   changeLanguage: PropTypes.func.isRequired,
   locale: PropTypes.string,
   activeStep: PropTypes.number,
@@ -84,7 +84,7 @@ App.PropTypes = {
 }
 
 App.defaultProps = {
-  locale: 'en',
+  locale: 'el',
   activeStep: 0
 }
 

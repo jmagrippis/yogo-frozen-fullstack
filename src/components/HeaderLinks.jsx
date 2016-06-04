@@ -23,7 +23,7 @@ class HeaderLinks extends React.Component {
         {links.map((link, key) => (
           <li key={key}><FlatButton labelStyle={labelStyle} linkButton href={link.location} label={link.label} /></li>
         ))}
-        <li key={'languages'}><FlatButton labelStyle={labelStyle} label={langLabel} onTouchTap={() => { changeLanguage(locale) }} /></li>
+        <li key={'languages'}><FlatButton labelStyle={labelStyle} label={'<' + langLabel + '>'} onTouchTap={() => { changeLanguage(locale) }} /></li>
       </ul>
     )
   }

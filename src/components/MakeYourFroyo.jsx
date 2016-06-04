@@ -3,7 +3,11 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
+import Paper from 'material-ui/Paper'
 import { StyleSheet, css } from 'aphrodite'
+
+import getLocalized from 'localization/getLocalized'
+import voting from 'localization/voting'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +16,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   maxWidth: {
-    maxWidth: '1280px'
+    maxWidth: '1280px',
+    padding: '1rem 2rem',
+    margin: '1rem'
   }
 })
 
@@ -23,12 +29,15 @@ class MakeYourFroyo extends React.Component {
   }
 
   render () {
-    let { className, steps, activeStep, prevStep, nextStep } = this.props
+    let { className, locale, activeStep, prevStep, nextStep } = this.props
+    let steps = voting.steps.map((step) => getLocalized(step, 'label', locale))
+    let headline = getLocalized(voting.headline, 'content', locale)
+    let body = getLocalized(voting.body, 'content', locale)
     return (
       <section className={className + ' ' + css(styles.container)} id='pick'>
-        <div className={css(styles.maxWidth)}>
-          <h2>Enjoying summer is as simple as 1, 2, 3</h2>
-          <p>No matter the calendar season, you can always get that sunshine and lollipops feeling by enjoying some Yogo Frozen! Create your own cup full of summer in three simple steps:</p>
+        <Paper className={css(styles.maxWidth)} zDepth={1}>
+          <h2>{headline.content}</h2>
+          {body.content.map((c, key) => <p key={key}>{c}</p>)}
           <Stepper activeStep={activeStep}>{steps.map((step, key) => (
             <Step key={key}>
               <StepLabel>{step.label}</StepLabel>
@@ -46,7 +55,7 @@ class MakeYourFroyo extends React.Component {
             primary
             onTouchTap={nextStep}
           />
-        </div>
+        </Paper>
       </section>
     )
   }
@@ -54,6 +63,7 @@ class MakeYourFroyo extends React.Component {
 
 MakeYourFroyo.propTypes = {
   className: PropTypes.string,
+  locale: PropTypes.string.isRequired,
   activeStep: PropTypes.number.isRequired,
   nextStep: PropTypes.func.isRequired,
   prevStep: PropTypes.func.isRequired

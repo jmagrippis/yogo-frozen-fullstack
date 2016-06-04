@@ -7,6 +7,8 @@ import Inbox from 'material-ui/svg-icons/content/inbox'
 import { cyan50, cyan100 } from 'material-ui/styles/colors'
 
 import HeaderLinks from 'components/HeaderLinks'
+import navLinks from 'localization/navLinks'
+import getLocalized from 'localization/getLocalized'
 
 const styles = StyleSheet.create({
   list: {
@@ -35,7 +37,8 @@ class Header extends React.Component {
   }
 
   render () {
-    let { className, brand, links, locale, changeLanguage } = this.props
+    let { className, brand, locale, changeLanguage } = this.props
+    let links = navLinks.map((link) => getLocalized(link, 'label', locale))
     return (
       <AppBar
         className={className}
@@ -51,7 +54,6 @@ class Header extends React.Component {
 Header.propTypes = {
   className: PropTypes.string,
   brand: PropTypes.string.isRequired,
-  links: PropTypes.array.isRequired,
   locale: PropTypes.string.isRequired,
   changeLanguage: PropTypes.func.isRequired
 }
