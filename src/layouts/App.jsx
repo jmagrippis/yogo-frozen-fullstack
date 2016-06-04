@@ -10,6 +10,7 @@ white, fullBlack
 
 import Header from 'components/Header'
 import Hero from 'components/Hero'
+import ShopMap from 'components/ShopMap'
 
 const fontFamily = '"Fira Sans", -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", "segoe ui", arial, sans-serif'
 const styles = StyleSheet.create({
@@ -21,6 +22,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     minHeight: '100vh'
+  },
+  map: {
+    height: '50vh'
   }
 })
 
@@ -42,12 +46,20 @@ const muiTheme = getMuiTheme({
 class App extends Component {
   render () {
     let { links, changeLanguage, locale } = this.props
+    let mapData = {
+      center: { lat: 37.975874, lng: 22.978 },
+      markers: [
+        { position: { lat: 37.975874, lng: 22.9772 }, icon: 'froyo.png' }
+      ],
+      zoom: 18
+    }
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
           <Header brand={'Yogo Frozen'} links={links} changeLanguage={changeLanguage} locale={locale} />
           <Hero title={'Create something wonderful!'} />
+          <ShopMap className={css(styles.map)} {...mapData} />
           <footer>This is our footer!</footer>
         </div>
       </MuiThemeProvider>
