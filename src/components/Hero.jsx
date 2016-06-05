@@ -1,7 +1,28 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { StyleSheet, css } from 'aphrodite'
+import Paper from 'material-ui/Paper'
+import RaisedButton from 'material-ui/RaisedButton'
+import { darkWhite } from 'material-ui/styles/colors'
 
-import Button from 'components/Button'
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '1rem 2rem',
+    color: darkWhite,
+    fontSize: '1.5rem',
+    textAlign: 'center'
+  },
+  title: {
+    fontSize: '3rem'
+  },
+  body: {
+    margin: '0 0 2rem'
+  }
+})
 
 class Hero extends React.Component {
   constructor (props) {
@@ -10,15 +31,25 @@ class Hero extends React.Component {
   }
 
   render () {
-    return <div className={this.props.className}>
-      <h2>{this.props.title}</h2>
-      <Button label={'Take Action!'} />
-    </div>
+    let { className, title, body, cta, target } = this.props
+    return (
+      <Paper className={className} zDepth={2} style={{ backgroundColor: 'rgba(0, 188, 212, 0.8)' }}>
+        <div className={css(styles.container)}>
+          <h1 className={css(styles.title)}>{title}</h1>
+          <p className={css(styles.body)}>{body}</p>
+          <RaisedButton primary labelStyle={{ fontSize: '1.25rem', padding: '0.5rem 2rem' }} label={cta} linkButton href={target} />
+        </div>
+      </Paper>
+    )
   }
 }
 
 Hero.propTypes = {
-  title: PropTypes.string.isRequired
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired
 }
 
 export default Hero

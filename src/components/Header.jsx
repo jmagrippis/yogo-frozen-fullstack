@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import Inbox from 'material-ui/svg-icons/content/inbox'
-import { cyan50, cyan100 } from 'material-ui/styles/colors'
+import { darkWhite, lightWhite } from 'material-ui/styles/colors'
 
 import HeaderLinks from 'components/HeaderLinks'
 import navLinks from 'localization/navLinks'
@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     padding: 0
   },
   altHoverText: {
-    color: cyan50,
+    color: darkWhite,
     transition: '0.25s color ease-in',
     ':hover': {
-      color: cyan100
+      color: lightWhite
     }
   },
   brand: {
