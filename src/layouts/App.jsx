@@ -46,7 +46,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { steps, changeLanguage, locale, activeStep, nextStep, prevStep } = this.props
+    let { steps, changeLanguage, locale, activeStep, nextStep, prevStep, flavours, setFlavour, selectedFlavourId } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -66,6 +66,9 @@ class App extends Component {
             nextStep={nextStep}
             prevStep={prevStep}
             locale={locale}
+            flavours={flavours}
+            setFlavour={setFlavour}
+            selectedFlavourId={selectedFlavourId}
           />
           <ShopMap className={css(styles.map)} {...mapData} />
           <footer>This is our footer!</footer>
@@ -80,7 +83,9 @@ App.PropTypes = {
   locale: PropTypes.string,
   activeStep: PropTypes.number,
   nextStep: PropTypes.func.isRequired,
-  prevStep: PropTypes.func.isRequired
+  prevStep: PropTypes.func.isRequired,
+  flavours: PropTypes.object.isRequired,
+  setFlavour: PropTypes.func.isRequired
 }
 
 App.defaultProps = {

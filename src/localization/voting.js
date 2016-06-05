@@ -20,8 +20,22 @@ const body = {
   ]
 }
 
+const buttons = {
+  content_en: {
+    back: 'back',
+    next: 'next',
+    vote: 'vote!'
+  },
+  content_el: {
+    back: 'ΠΙΣΩ',
+    next: 'ΕΠΟΜΕΝΟ',
+    vote: 'ΨΗΦΙΣΕ!'
+  }
+}
+
 export default {
   steps,
   headline,
-  body
+  body,
+  buttons
 }

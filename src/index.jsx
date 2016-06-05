@@ -9,6 +9,7 @@ import 'normalize.css'
 import configureStore from 'store/configureStore'
 import Root from 'layouts/Root'
 import { loadState, saveState } from 'utilities/localStorage'
+import { fetchFlavours } from 'reducers/flavours'
 import 'styles/main.css'
 
 injectTapEventPlugin()
@@ -19,6 +20,8 @@ store.subscribe(throttle(() => {
     locale: store.getState().locale
   })
 }, 1000))
+
+store.dispatch(fetchFlavours())
 
 render(
   <AppContainer>
