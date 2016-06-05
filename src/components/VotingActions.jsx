@@ -19,12 +19,14 @@ class VotingActions extends React.Component {
           onTouchTap={prevStep}
           style={{marginRight: 12}}
         />
+      {activeStep < 3 ? (
         <RaisedButton
           label={activeStep > 1 ? labels.vote : labels.next}
           primary
           disabled={activeStep === 0 && !selectedFlavour}
           onTouchTap={nextStep}
         />
+      ) : ''}
       </div>
     )
   }

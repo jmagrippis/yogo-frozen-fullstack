@@ -8,6 +8,7 @@ import { StyleSheet, css } from 'aphrodite'
 import SelectFlavour from 'components/SelectFlavour'
 import SelectToppings from 'components/SelectToppings'
 import VotingActions from 'components/VotingActions'
+import VoteIncentive from 'components/VoteIncentive'
 import getLocalized from 'localization/getLocalized'
 import voting from 'localization/voting'
 
@@ -44,6 +45,8 @@ class MakeYourFroyo extends React.Component {
     toppings, toggleTopping, selectedToppingIds }) {
     let flavourIntro = getLocalized(voting.flavourIntro, 'content', locale)
     let toppingsIntro = getLocalized(voting.toppingsIntro, 'content', locale)
+    let votingIntro = voting.votingIntro['content_' + locale]
+    let voted = voting.voted['content_' + locale]
     switch (activeStep) {
       case 0:
         if (flavours.count() < 1) return <CircularProgress className={css(styles.mb)} />
@@ -70,8 +73,18 @@ class MakeYourFroyo extends React.Component {
             intro={toppingsIntro.content}
           />
         )
+      case 2:
+        return (
+          <VoteIncentive
+            className={css(styles.mb, styles.maxWidthSmall, styles.container)}
+            selectedFlavour={selectedFlavour.get('name_' + locale)}
+            selectedToppings={toppings.filter(topping => selectedToppingIds.has(topping.id)).map(topping => topping.get('name_' + locale)).valueSeq()}
+            locale={locale}
+            intro={votingIntro}
+          />
+        )
       default:
-        return <div>How did you get here?</div>
+        return <p>{voted}</p>
     }
   }
 

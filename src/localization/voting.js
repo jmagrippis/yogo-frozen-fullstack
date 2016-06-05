@@ -43,11 +43,31 @@ const toppingsIntro = {
   content_el: 'Τέλεια! Το επόμενο βήμα είναι να προσθέσεις όσα από τα πεντανόστιμά μας toppings τραβάει η καρδιά σου!'
 }
 
+const votingIntro = {
+  content_en: [
+    'The last and definitely most important step, is to enjoy your tasty creation.',
+    'It is also the easiest step! Who wouldn\'t enjoy a fresh froyo',
+    'If you are satisfied with your picks and are wondering what the most popular ones are, vote! Prizes await each month\'s luckiest participants!'
+  ],
+  content_el: [
+    'Το τελευταίο και πιο σημαντικό βήμα είναι να απολαύσεις τη δημιουργία σου.',
+    'Ταυτόχρονα είναι και το πιο εύκολο! Ποιός δεν θα απολάμβανε ένα φρέσκο παγωμένο γιαούρτι',
+    'Έαν είσαι ευχαριστημένος από τις επιλογές σου και αναρωτιέσαι ποιές είναι οι πιο δημοφιλής, ψήφισε! Πλούσια δώρα περιμένουν τους πιο τυχερούς συμμετέχοντες του μήνα!'
+  ]
+}
+
+const voted = {
+  content_en: 'Thanks for voting! We\'ll get back to you once we start processing votes.',
+  content_el: 'Ευχαριστούμε για την ψήφο σας! Θα επανέλθουμε όταν ξεκινήσουμε την καταμέτρηση.'
+}
+
 export default {
   steps,
   headline,
   body,
   buttons,
   flavourIntro,
-  toppingsIntro
+  toppingsIntro,
+  votingIntro,
+  voted
 }
