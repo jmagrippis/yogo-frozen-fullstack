@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
     padding: '1rem 2rem',
     margin: '1rem'
   },
+  maxWidthSmall: {
+    maxWidth: '480px'
+  },
   mb: {
     marginBottom: '1.5rem'
   }
@@ -33,16 +36,18 @@ class MakeYourFroyo extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
   }
 
-  renderStepContent ({ locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavourId }, labels) {
+  renderStepContent ({ locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavour }, labels) {
+    let flavourIntro = getLocalized(voting.flavourIntro, 'content', locale)
     return (
       <div className={css(styles.container)}>
         {flavours.count() < 1 ? <CircularProgress className={css(styles.mb)} /> : (
           <SelectFlavour
-            className={css(styles.mb)}
+            className={css(styles.mb, styles.maxWidthSmall, styles.container)}
             flavours={flavours}
             setFlavour={setFlavour}
-            selectedId={selectedFlavourId}
+            selectedId={selectedFlavour && selectedFlavour.get('id')}
             locale={locale}
+            intro={flavourIntro.content}
           />
         )}
         <div>
@@ -55,7 +60,7 @@ class MakeYourFroyo extends React.Component {
           <RaisedButton
             label={activeStep > 1 ? labels.vote : labels.next}
             primary
-            disabled={activeStep === 0 && !selectedFlavourId}
+            disabled={activeStep === 0 && !selectedFlavour}
             onTouchTap={nextStep}
           />
         </div>
@@ -64,7 +69,7 @@ class MakeYourFroyo extends React.Component {
   }
 
   render () {
-    let { className, locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavourId } = this.props
+    let { className, locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavour } = this.props
     let steps = voting.steps.map((step) => getLocalized(step, 'label', locale))
     let headline = getLocalized(voting.headline, 'content', locale)
     let body = getLocalized(voting.body, 'content', locale)
@@ -81,7 +86,7 @@ class MakeYourFroyo extends React.Component {
             </Step>
           ))}
           </Stepper>
-          {this.renderStepContent({ locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavourId }, buttons.content)}
+          {this.renderStepContent({ locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavour }, buttons.content)}
         </Paper>
       </section>
     )
@@ -96,7 +101,7 @@ MakeYourFroyo.propTypes = {
   nextStep: PropTypes.func.isRequired,
   flavours: PropTypes.object.isRequired,
   setFlavour: PropTypes.func.isRequired,
-  selectedFlavourId: PropTypes.string
+  selectedFlavour: PropTypes.object
 }
 
 export default MakeYourFroyo

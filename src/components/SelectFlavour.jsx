@@ -11,24 +11,27 @@ class SelectFlavour extends React.Component {
   }
 
   render () {
-    let { className, flavours, selectedId, locale, setFlavour } = this.props
+    let { className, flavours, selectedId, locale, setFlavour, intro } = this.props
+    console.log(selectedId)
     return (
-      <RadioButtonGroup
-        className={className}
-        name={'flavour'}
-        valueSelected={selectedId}
-        onChange={(_, value) => setFlavour(value)}
-      >
-        {flavours.valueSeq().map(flavour => (
-          <RadioButton
-            key={flavour.get('id')}
-            value={flavour.get('id')}
-            label={flavour.get('name_' + locale)}
-            checkedIcon={<ActionFavorite />}
-            uncheckedIcon={<ActionFavoriteBorder />}
-          />
-        ))}
-      </RadioButtonGroup>
+      <div className={className}>
+        <p style={{ textAlign: 'center' }}><i>{intro}</i></p>
+        <RadioButtonGroup
+          name={'flavour'}
+          valueSelected={selectedId}
+          onChange={(_, value) => selectedId !== value && setFlavour(value)}
+        >
+          {flavours.valueSeq().map(flavour => (
+            <RadioButton
+              key={flavour.get('id')}
+              value={flavour.get('id')}
+              label={flavour.get('name_' + locale)}
+              checkedIcon={<ActionFavorite />}
+              uncheckedIcon={<ActionFavoriteBorder />}
+            />
+          ))}
+        </RadioButtonGroup>
+      </div>
     )
   }
 }
@@ -38,7 +41,8 @@ SelectFlavour.propTypes = {
   flavours: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   setFlavour: PropTypes.func.isRequired,
-  selectedId: PropTypes.string
+  selectedId: PropTypes.string,
+  intro: PropTypes.string
 }
 
 export default SelectFlavour

@@ -33,9 +33,15 @@ const buttons = {
   }
 }
 
+const flavourIntro = {
+  content_en: 'It all starts with a solid base! From plain classic, to extravagant mango, you can rest assured you will always be getting fresh, pure, Greek yoghurt.',
+  content_el: 'Όλα ξεκινούν απο μία σταθερή βάση! Από απλή κλασσική σε πολυτελής μάνγκο, το σίγουρο είναι ότι πάντα θα παίρνεις φρέσκο, καθαρό, Ελληνικό γιαούρτι.'
+}
+
 export default {
   steps,
   headline,
   body,
-  buttons
+  buttons,
+  flavourIntro
 }
