@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
-import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
 import Paper from 'material-ui/Paper'
 import CircularProgress from 'material-ui/CircularProgress'
 import { StyleSheet, css } from 'aphrodite'
 
 import SelectFlavour from 'components/SelectFlavour'
 import SelectToppings from 'components/SelectToppings'
+import VotingActions from 'components/VotingActions'
 import getLocalized from 'localization/getLocalized'
 import voting from 'localization/voting'
 
@@ -37,8 +36,8 @@ class MakeYourFroyo extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
   }
 
-  getStepContent ({ locale, activeStep, prevStep, nextStep, flavours, setFlavour,
-    selectedFlavour, toppings, toggleTopping, selectedToppingIds }) {
+  getStepContent ({ locale, activeStep, flavours, setFlavour, selectedFlavour,
+    toppings, toggleTopping, selectedToppingIds }) {
     let flavourIntro = getLocalized(voting.flavourIntro, 'content', locale)
     let toppingsIntro = getLocalized(voting.toppingsIntro, 'content', locale)
     switch (activeStep) {
@@ -92,22 +91,15 @@ class MakeYourFroyo extends React.Component {
           ))}
           </Stepper>
           <div className={css(styles.container)}>
-            {this.getStepContent({ locale, activeStep, prevStep, nextStep, flavours,
-              setFlavour, selectedFlavour, toppings, toggleTopping, selectedToppingIds })}
-            <div>
-              <FlatButton
-                label={labels.back}
-                disabled={activeStep === 0}
-                onTouchTap={prevStep}
-                style={{marginRight: 12}}
-              />
-              <RaisedButton
-                label={activeStep > 1 ? labels.vote : labels.next}
-                primary
-                disabled={activeStep === 0 && !selectedFlavour}
-                onTouchTap={nextStep}
-              />
-            </div>
+            {this.getStepContent({ locale, activeStep, flavours, setFlavour,
+              selectedFlavour, toppings, toggleTopping, selectedToppingIds })}
+            <VotingActions
+              activeStep={activeStep}
+              prevStep={prevStep}
+              nextStep={nextStep}
+              labels={labels}
+              selectedFlavour={selectedFlavour}
+            />
           </div>
         </Paper>
       </section>
