@@ -4,7 +4,7 @@ import { Map, Set } from 'immutable'
 export const NEXT_STEP = 'NEXT_STEP'
 export const PREV_STEP = 'PREV_STEP'
 export const SET_FLAVOUR = 'SET_FLAVOUR'
-export const ADD_TOPPING = 'ADD_TOPPING'
+export const TOGGLE_TOPPING = 'TOGGLE_TOPPING'
 
 // Action Creators
 export const nextStep = () => ({
@@ -20,8 +20,8 @@ export const setFlavour = (flavourId) => ({
   flavourId
 })
 
-export const addTopping = (toppingId) => ({
-  type: ADD_TOPPING,
+export const toggleTopping = (toppingId) => ({
+  type: TOGGLE_TOPPING,
   toppingId
 })
 
@@ -41,7 +41,10 @@ export default function (state = defaultState, action) {
       return state.set('activeStep', state.get('activeStep') - 1)
     case SET_FLAVOUR:
       return state.set('flavour', action.flavourId)
-    case ADD_TOPPING:
+    case TOGGLE_TOPPING:
+      if (state.get('toppings').has(action.toppingId)) {
+        return state.set('toppings', state.get('toppings').delete(action.toppingId))
+      }
       return state.set('toppings', state.get('toppings').add(action.toppingId))
     default:
       return state

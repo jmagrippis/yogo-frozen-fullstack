@@ -38,10 +38,16 @@ const flavourIntro = {
   content_el: 'Όλα ξεκινούν απο μία σταθερή βάση! Από απλή κλασσική σε πολυτελής μάνγκο, το σίγουρο είναι ότι πάντα θα παίρνεις φρέσκο, καθαρό, Ελληνικό γιαούρτι.'
 }
 
+const toppingsIntro = {
+  content_en: 'Perfect! Next step is to add as many of our delicious toppings as your heart desires!',
+  content_el: 'Τέλεια! Το επόμενο βήμα είναι να προσθέσεις όσα από τα πεντανόστιμά μας toppings τραβάει η καρδιά σου!'
+}
+
 export default {
   steps,
   headline,
   body,
   buttons,
-  flavourIntro
+  flavourIntro,
+  toppingsIntro
 }

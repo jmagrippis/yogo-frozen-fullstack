@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
 
 import MakeYourFroyo from 'components/MakeYourFroyo'
-import { nextStep, prevStep, setFlavour } from 'reducers/voting'
+import { nextStep, prevStep, setFlavour, toggleTopping } from 'reducers/voting'
 
 const mapStateToProps = (state) => ({
   activeStep: state.voting.get('activeStep'),
   flavours: state.api.flavours,
-  selectedFlavour: state.api.flavours.get(state.voting.get('flavour'))
+  selectedFlavour: state.api.flavours.get(state.voting.get('flavour')),
+  toppings: state.api.toppings,
+  selectedToppingIds: state.voting.get('toppings')
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,6 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setFlavour (flavourId) {
     dispatch(setFlavour(flavourId))
+  },
+  toggleTopping (toppingId) {
+    dispatch(toggleTopping(toppingId))
   }
 })
 

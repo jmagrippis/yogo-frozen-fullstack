@@ -12,7 +12,6 @@ class SelectFlavour extends React.Component {
 
   render () {
     let { className, flavours, selectedId, locale, setFlavour, intro } = this.props
-    console.log(selectedId)
     return (
       <div className={className}>
         <p style={{ textAlign: 'center' }}><i>{intro}</i></p>

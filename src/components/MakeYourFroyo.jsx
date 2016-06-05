@@ -8,6 +8,7 @@ import CircularProgress from 'material-ui/CircularProgress'
 import { StyleSheet, css } from 'aphrodite'
 
 import SelectFlavour from 'components/SelectFlavour'
+import SelectToppings from 'components/SelectToppings'
 import getLocalized from 'localization/getLocalized'
 import voting from 'localization/voting'
 
@@ -36,11 +37,14 @@ class MakeYourFroyo extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
   }
 
-  renderStepContent ({ locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavour }, labels) {
+  getStepContent ({ locale, activeStep, prevStep, nextStep, flavours, setFlavour,
+    selectedFlavour, toppings, toggleTopping, selectedToppingIds }) {
     let flavourIntro = getLocalized(voting.flavourIntro, 'content', locale)
-    return (
-      <div className={css(styles.container)}>
-        {flavours.count() < 1 ? <CircularProgress className={css(styles.mb)} /> : (
+    let toppingsIntro = getLocalized(voting.toppingsIntro, 'content', locale)
+    switch (activeStep) {
+      case 0:
+        if (flavours.count() < 1) return <CircularProgress className={css(styles.mb)} />
+        return (
           <SelectFlavour
             className={css(styles.mb, styles.maxWidthSmall, styles.container)}
             flavours={flavours}
@@ -49,31 +53,32 @@ class MakeYourFroyo extends React.Component {
             locale={locale}
             intro={flavourIntro.content}
           />
-        )}
-        <div>
-          <FlatButton
-            label={labels.back}
-            disabled={activeStep === 0}
-            onTouchTap={prevStep}
-            style={{marginRight: 12}}
+        )
+      case 1:
+        if (toppings.count() < 1) return <CircularProgress className={css(styles.mb)} />
+        return (
+          <SelectToppings
+            className={css(styles.mb, styles.maxWidthSmall, styles.container)}
+            toppings={toppings}
+            toggleTopping={toggleTopping}
+            selectedIds={selectedToppingIds}
+            locale={locale}
+            selectedFlavour={selectedFlavour.get('name_' + locale)}
+            intro={toppingsIntro.content}
           />
-          <RaisedButton
-            label={activeStep > 1 ? labels.vote : labels.next}
-            primary
-            disabled={activeStep === 0 && !selectedFlavour}
-            onTouchTap={nextStep}
-          />
-        </div>
-      </div>
-    )
+        )
+      default:
+        return <div>How did you get here?</div>
+    }
   }
 
   render () {
-    let { className, locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavour } = this.props
+    let { className, locale, activeStep, prevStep, nextStep, flavours, setFlavour,
+      selectedFlavour, toppings, toggleTopping, selectedToppingIds } = this.props
     let steps = voting.steps.map((step) => getLocalized(step, 'label', locale))
     let headline = getLocalized(voting.headline, 'content', locale)
     let body = getLocalized(voting.body, 'content', locale)
-    let buttons = getLocalized(voting.buttons, 'content', locale)
+    let labels = getLocalized(voting.buttons, 'content', locale).content
 
     return (
       <section className={className + ' ' + css(styles.container)} id='pick'>
@@ -86,7 +91,24 @@ class MakeYourFroyo extends React.Component {
             </Step>
           ))}
           </Stepper>
-          {this.renderStepContent({ locale, activeStep, prevStep, nextStep, flavours, setFlavour, selectedFlavour }, buttons.content)}
+          <div className={css(styles.container)}>
+            {this.getStepContent({ locale, activeStep, prevStep, nextStep, flavours,
+              setFlavour, selectedFlavour, toppings, toggleTopping, selectedToppingIds })}
+            <div>
+              <FlatButton
+                label={labels.back}
+                disabled={activeStep === 0}
+                onTouchTap={prevStep}
+                style={{marginRight: 12}}
+              />
+              <RaisedButton
+                label={activeStep > 1 ? labels.vote : labels.next}
+                primary
+                disabled={activeStep === 0 && !selectedFlavour}
+                onTouchTap={nextStep}
+              />
+            </div>
+          </div>
         </Paper>
       </section>
     )
@@ -101,7 +123,10 @@ MakeYourFroyo.propTypes = {
   nextStep: PropTypes.func.isRequired,
   flavours: PropTypes.object.isRequired,
   setFlavour: PropTypes.func.isRequired,
-  selectedFlavour: PropTypes.object
+  selectedFlavour: PropTypes.object,
+  toppings: PropTypes.object.isRequired,
+  toggleTopping: PropTypes.func.isRequired,
+  selectedToppingIds: PropTypes.object
 }
 
 export default MakeYourFroyo

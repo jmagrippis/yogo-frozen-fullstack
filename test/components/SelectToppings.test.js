@@ -4,17 +4,17 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import { OrderedMap } from 'immutable'
 
-import SelectFlavour from 'components/SelectFlavour'
+import SelectToppings from 'components/SelectToppings'
 
-describe('(Component) SelectFlavour', () => {
+describe('(Component) SelectToppings', () => {
   it('should exist', () => {
     let data = {
-      flavours: OrderedMap(),
+      toppings: OrderedMap(),
       locale: 'en',
-      setFlavour: sinon.stub()
+      toggleTopping: sinon.stub()
     }
     // TODO: Meaningful tests
-    let wrapper = shallow(<SelectFlavour {...data} />)
+    let wrapper = shallow(<SelectToppings {...data} />)
     expect(wrapper && true).to.equal(true)
   })
 })

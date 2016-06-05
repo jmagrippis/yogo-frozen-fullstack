@@ -1,6 +1,5 @@
-import reducer, { defaultState, nextStep, prevStep, setFlavour, addTopping } from 'reducers/voting'
+import reducer, { defaultState, nextStep, prevStep, setFlavour, toggleTopping } from 'reducers/voting'
 import { expect } from 'chai'
-import { Set } from 'immutable'
 
 describe('(Redux) voting', () => {
   describe('(Reducer)', () => {
@@ -39,26 +38,14 @@ describe('(Redux) voting', () => {
       nextState = reducer(nextState, action)
       expect(nextState.get('flavour')).to.equal(flavourId)
     })
-    it('adds the given toppingId to the Set', () => {
+    it('adds the given toppingId to the Set, or removes it if it already exists', () => {
       let toppingId = 'abc123'
-      let action = addTopping(toppingId)
+      let action = toggleTopping(toppingId)
       let nextState = reducer(undefined, action)
       expect(nextState.get('toppings').has(toppingId)).to.equal(true)
 
-      toppingId = 'd33'
-      action = addTopping(toppingId)
       nextState = reducer(nextState, action)
-      expect(nextState.get('toppings').has(toppingId)).to.equal(true)
-    })
-    it('does not add the same toppingId multiple times', () => {
-      const state = defaultState.set('toppings', Set(['abc123']))
-      let toppingId = 'abc123'
-      let action = addTopping(toppingId)
-      let nextState = reducer(state, action)
-      expect(nextState.get('toppings').count()).to.equal(1)
-
-      nextState = reducer(nextState, action)
-      expect(nextState.get('toppings').count()).to.equal(1)
+      expect(nextState.get('toppings').has(toppingId)).to.equal(false)
     })
   })
 })
