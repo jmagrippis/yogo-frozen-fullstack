@@ -46,7 +46,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { changeLanguage, locale } = this.props
+    let { changeLanguage, locale, windowWidth } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -60,7 +60,7 @@ class App extends Component {
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
           <Header brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} />
           <Hero title={'Create something wonderful!'} />
-          <ConnectedMakeYourFroyo locale={locale} />
+          <ConnectedMakeYourFroyo locale={locale} windowWidth={windowWidth} />
           <ShopMap className={css(styles.map)} {...mapData} />
           <footer>This is our footer!</footer>
         </div>
@@ -71,7 +71,8 @@ class App extends Component {
 
 App.PropTypes = {
   changeLanguage: PropTypes.func.isRequired,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  windowWidth: PropTypes.number.isRequired
 }
 
 App.defaultProps = {

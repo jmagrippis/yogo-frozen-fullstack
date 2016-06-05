@@ -36,6 +36,10 @@ class MakeYourFroyo extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
   }
 
+  getStepper () {
+
+  }
+
   getStepContent ({ locale, activeStep, flavours, setFlavour, selectedFlavour,
     toppings, toggleTopping, selectedToppingIds }) {
     let flavourIntro = getLocalized(voting.flavourIntro, 'content', locale)
@@ -73,7 +77,7 @@ class MakeYourFroyo extends React.Component {
 
   render () {
     let { className, locale, activeStep, prevStep, nextStep, flavours, setFlavour,
-      selectedFlavour, toppings, toggleTopping, selectedToppingIds } = this.props
+      selectedFlavour, toppings, toggleTopping, selectedToppingIds, windowWidth } = this.props
     let steps = voting.steps.map((step) => getLocalized(step, 'label', locale))
     let headline = getLocalized(voting.headline, 'content', locale)
     let body = getLocalized(voting.body, 'content', locale)
@@ -84,7 +88,7 @@ class MakeYourFroyo extends React.Component {
         <Paper className={css(styles.maxWidth)} zDepth={1}>
           <h2>{headline.content}</h2>
           {body.content.map((c, key) => <p key={key}>{c}</p>)}
-          <Stepper activeStep={activeStep}>{steps.map((step, key) => (
+          <Stepper activeStep={activeStep} orientation={windowWidth < 480 ? 'vertical' : 'horizontal'}>{steps.map((step, key) => (
             <Step key={key}>
               <StepLabel>{step.label}</StepLabel>
             </Step>
@@ -118,7 +122,8 @@ MakeYourFroyo.propTypes = {
   selectedFlavour: PropTypes.object,
   toppings: PropTypes.object.isRequired,
   toggleTopping: PropTypes.func.isRequired,
-  selectedToppingIds: PropTypes.object
+  selectedToppingIds: PropTypes.object,
+  windowWidth: PropTypes.number.isRequired
 }
 
 export default MakeYourFroyo

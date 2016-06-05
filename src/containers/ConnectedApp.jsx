@@ -4,7 +4,8 @@ import App from 'layouts/App'
 import { setLocale } from 'reducers/locale'
 
 const mapStateToProps = (state) => ({
-  locale: state.locale
+  locale: state.locale,
+  windowWidth: state.windowWidth
 })
 
 const mapDispatchToProps = (dispatch) => ({

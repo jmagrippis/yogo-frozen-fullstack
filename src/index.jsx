@@ -11,6 +11,7 @@ import Root from 'layouts/Root'
 import { loadState, saveState } from 'utilities/localStorage'
 import { fetchFlavours } from 'reducers/flavours'
 import { fetchToppings } from 'reducers/toppings'
+import { setWindowWidth } from 'reducers/windowWidth'
 import 'styles/main.css'
 
 injectTapEventPlugin()
@@ -22,8 +23,15 @@ store.subscribe(throttle(() => {
   })
 }, 1000))
 
+// Fetch the collections
 store.dispatch(fetchFlavours())
 store.dispatch(fetchToppings())
+
+// Sets the window width and watches for changes
+store.dispatch(setWindowWidth(window.innerWidth))
+window.addEventListener('resize', throttle(() => {
+  store.dispatch(setWindowWidth(window.innerWidth))
+}))
 
 render(
   <AppContainer>
