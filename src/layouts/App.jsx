@@ -12,6 +12,7 @@ import Header from 'components/Header'
 import Hero from 'components/Hero'
 import ConnectedMakeYourFroyo from 'containers/ConnectedMakeYourFroyo'
 import ShopMap from 'components/ShopMap'
+import Footer from 'components/Footer'
 import hero from 'localization/hero'
 
 const fontFamily = '"Fira Sans", -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", "segoe ui", arial, sans-serif'
@@ -80,7 +81,7 @@ class App extends Component {
           </section>
           <ConnectedMakeYourFroyo locale={locale} windowWidth={windowWidth} />
           <ShopMap className={css(styles.map)} {...mapData} />
-          <footer>This is our footer!</footer>
+          <Footer locale={locale} />
         </div>
       </MuiThemeProvider>
     )
