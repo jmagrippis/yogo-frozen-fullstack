@@ -10,6 +10,7 @@ import configureStore from 'store/configureStore'
 import Root from 'layouts/Root'
 import { loadState, saveState } from 'utilities/localStorage'
 import { fetchFlavours } from 'reducers/flavours'
+import { fetchToppings } from 'reducers/toppings'
 import 'styles/main.css'
 
 injectTapEventPlugin()
@@ -22,6 +23,7 @@ store.subscribe(throttle(() => {
 }, 1000))
 
 store.dispatch(fetchFlavours())
+store.dispatch(fetchToppings())
 
 render(
   <AppContainer>

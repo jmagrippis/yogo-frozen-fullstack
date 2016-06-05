@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import locale from 'reducers/locale'
 import voting from 'reducers/voting'
 import flavours from 'reducers/flavours'
+import toppings from 'reducers/toppings'
 import meta from 'reducers/meta'
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   voting,
   api: combineReducers({
     flavours,
+    toppings,
     meta
   })
 })
