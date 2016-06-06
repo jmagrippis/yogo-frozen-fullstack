@@ -8,7 +8,7 @@ pink400, pink500, pink700,
 white, fullBlack
 } from 'material-ui/styles/colors'
 
-import Header from 'components/Header'
+import ConnectedHeader from 'containers/ConnectedHeader'
 import Hero from 'components/Hero'
 import ConnectedMakeYourFroyo from 'containers/ConnectedMakeYourFroyo'
 import ShopMap from 'components/ShopMap'
@@ -57,7 +57,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { changeLanguage, locale, sidebar, toggleSidebar, windowWidth } = this.props
+    let { changeLanguage, locale, windowWidth } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -70,7 +70,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
-          <Header brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} sidebar={sidebar} toggleSidebar={toggleSidebar} windowWidth={windowWidth} />
+          <ConnectedHeader brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} windowWidth={windowWidth} />
           <section className={css(styles.hero)}>
             <Hero
               title={heroData.title}
@@ -93,8 +93,6 @@ class App extends Component {
 App.PropTypes = {
   changeLanguage: PropTypes.func.isRequired,
   locale: PropTypes.string,
-  sidebar: PropTypes.bool,
-  toggleSidebar: PropTypes.func.isRequired,
   windowWidth: PropTypes.number.isRequired
 }
 
