@@ -1,3 +1,3 @@
-html a[type="button"] {
+html a[type="button"], html span[type="button"] {
   -webkit-appearance: none;
 }

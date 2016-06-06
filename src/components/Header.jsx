@@ -7,6 +7,7 @@ import Inbox from 'material-ui/svg-icons/content/inbox'
 import { darkWhite, lightWhite } from 'material-ui/styles/colors'
 
 import HeaderLinks from 'components/HeaderLinks'
+import HeaderResponsiveLinks from 'components/HeaderResponsiveLinks'
 import navLinks from 'localization/navLinks'
 import getLocalized from 'localization/getLocalized'
 
@@ -37,7 +38,7 @@ class Header extends React.Component {
   }
 
   render () {
-    let { className, brand, locale, changeLanguage } = this.props
+    let { className, brand, locale, changeLanguage, sidebar, toggleSidebar, windowWidth } = this.props
     let links = navLinks.map((link) => getLocalized(link, 'label', locale))
     return (
       <AppBar
@@ -45,7 +46,9 @@ class Header extends React.Component {
         zDepth={3}
         title={<a href={'#'} className={css(styles.brand, styles.altHoverText)}>{brand}</a>}
         iconElementLeft={<IconButton><Inbox /></IconButton>}
-        iconElementRight={<HeaderLinks className={css(styles.list)} links={links} locale={locale} changeLanguage={changeLanguage} />}
+        iconElementRight={windowWidth > 800 ? (
+          <HeaderLinks className={css(styles.list)} links={links} locale={locale} changeLanguage={changeLanguage} />
+        ) : <HeaderResponsiveLinks links={links} locale={locale} changeLanguage={changeLanguage} open={sidebar} toggleOpen={toggleSidebar} />}
       />
     )
   }
@@ -55,7 +58,10 @@ Header.propTypes = {
   className: PropTypes.string,
   brand: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
-  changeLanguage: PropTypes.func.isRequired
+  changeLanguage: PropTypes.func.isRequired,
+  sidebar: PropTypes.bool,
+  toggleSidebar: PropTypes.func.isRequired,
+  windowWidth: PropTypes.number.isRequired
 }
 
 export default Header

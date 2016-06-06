@@ -57,7 +57,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { changeLanguage, locale, windowWidth } = this.props
+    let { changeLanguage, locale, sidebar, toggleSidebar, windowWidth } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -70,7 +70,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
-          <Header brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} />
+          <Header brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} sidebar={sidebar} toggleSidebar={toggleSidebar} windowWidth={windowWidth} />
           <section className={css(styles.hero)}>
             <Hero
               title={heroData.title}
@@ -80,7 +80,9 @@ class App extends Component {
             />
           </section>
           <ConnectedMakeYourFroyo locale={locale} windowWidth={windowWidth} />
-          <ShopMap className={css(styles.map)} {...mapData} />
+          <section id='location'>
+            <ShopMap className={css(styles.map)} {...mapData} />
+          </section>
           <Footer locale={locale} />
         </div>
       </MuiThemeProvider>
@@ -91,6 +93,8 @@ class App extends Component {
 App.PropTypes = {
   changeLanguage: PropTypes.func.isRequired,
   locale: PropTypes.string,
+  sidebar: PropTypes.bool,
+  toggleSidebar: PropTypes.func.isRequired,
   windowWidth: PropTypes.number.isRequired
 }
 

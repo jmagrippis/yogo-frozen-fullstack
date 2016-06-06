@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import FlatButton from 'material-ui/FlatButton'
-import { cyan50 } from 'material-ui/styles/colors'
+import { darkWhite } from 'material-ui/styles/colors'
 
 const labelStyle = {
-  color: cyan50,
+  color: darkWhite,
   fontSize: '1.125rem',
   textTransform: 'none'
 }
@@ -21,9 +21,9 @@ class HeaderLinks extends React.Component {
     return (
       <ul className={className}>
         {links.map((link, key) => (
-          <li key={key}><FlatButton labelStyle={labelStyle} linkButton href={link.location} label={link.label} /></li>
+          <li key={key}><FlatButton labelStyle={labelStyle} linkButton href={'#' + link.location} label={link.label} /></li>
         ))}
-        <li key={'languages'}><FlatButton labelStyle={labelStyle} label={'<' + langLabel + '>'} onTouchTap={() => { changeLanguage(locale) }} /></li>
+        <li key='languages'><FlatButton labelStyle={labelStyle} label={'<' + langLabel + '>'} onTouchTap={() => { changeLanguage(locale) }} /></li>
       </ul>
     )
   }
