@@ -2,12 +2,29 @@ var webpack = require('webpack')
 var path = require('path')
 
 module.exports = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
-    './src/index.jsx'
-  ],
+  entry: {
+    app: [
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      'react-hot-loader/patch',
+      './src/index.jsx'
+    ],
+    vendor: [
+      'aphrodite',
+      'immutable',
+      'lodash',
+      'material-ui',
+      'normalize.css',
+      'react',
+      'react-addons-pure-render-mixin',
+      'react-dom',
+      'react-google-maps',
+      'react-redux',
+      'react-tap-event-plugin',
+      'redux',
+      'redux-thunk'
+    ]
+  },
   module: {
     loaders: [
       {
@@ -41,6 +58,7 @@ module.exports = {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js')
   ]
 }
