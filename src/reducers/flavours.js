@@ -7,19 +7,21 @@ import { setFetching, setLastUpdated } from 'reducers/meta'
 export const SET_FLAVOURS = 'SET_FLAVOURS'
 
 // Action Creators
-export const fetchFlavours = (date) => {
+export const fetchFlavours = (db, date) => {
   return (dispatch, getState) => {
     if (getState().api.meta.get('isFetching').get('flavours')) return
     dispatch(setFetching('flavours', true))
-    // TODO: actually fetch from Horizon!
-    let flavours = [
-      { id: 'abc', name_en: 'strawberry', name_el: 'φράουλα' },
-      { id: 'd123', name_en: 'chocolate', name_el: 'σοκολάτα' },
-      { id: 'e456', name_en: 'vanilla', name_el: 'βανίλλια' }
-    ]
-    dispatch(setFetching('flavours', false))
-    dispatch(setLastUpdated('flavours', typeof date !== 'undefined' ? date : new Date()))
-    return dispatch(setFlavours(flavours))
+    db('flavours').order('ordering').fetch().subscribe(
+      (flavours) => {
+        dispatch(setFetching('flavours', false))
+        dispatch(setLastUpdated('flavours', typeof date !== 'undefined' ? date : new Date()))
+        return dispatch(setFlavours(flavours))
+      },
+      (err) => {
+        dispatch(setFetching('flavours', false))
+        console.error(err)
+      }
+    )
   }
 }
 

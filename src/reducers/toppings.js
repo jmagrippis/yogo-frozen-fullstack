@@ -7,19 +7,21 @@ import { setFetching, setLastUpdated } from 'reducers/meta'
 export const SET_TOPPINGS = 'SET_TOPPINGS'
 
 // Action Creators
-export const fetchToppings = (date) => {
+export const fetchToppings = (db, date) => {
   return (dispatch, getState) => {
     if (getState().api.meta.get('isFetching').get('toppings')) return
     dispatch(setFetching('toppings', true))
-    // TODO: actually fetch from Horizon!
-    let toppings = [
-      { id: 'c123', name_en: 'cherries', name_el: 'κεράσια' },
-      { id: 'cd555', name_en: 'dark chocolate', name_el: 'μαύρη σοκολάτα' },
-      { id: 'sc678', name_en: 'sour cherries', name_el: 'βύσσινα' }
-    ]
-    dispatch(setFetching('toppings', false))
-    dispatch(setLastUpdated('toppings', typeof date !== 'undefined' ? date : new Date()))
-    return dispatch(setToppings(toppings))
+    db('toppings').order('ordering').fetch().subscribe(
+      (toppings) => {
+        dispatch(setFetching('toppings', false))
+        dispatch(setLastUpdated('toppings', typeof date !== 'undefined' ? date : new Date()))
+        return dispatch(setToppings(toppings))
+      },
+      (err) => {
+        dispatch(setFetching('toppings', false))
+        console.error(err)
+      }
+    )
   }
 }
 

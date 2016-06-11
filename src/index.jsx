@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import throttle from 'lodash/throttle'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import Horizon from '@horizon/client'
 import 'normalize.css'
 
 import configureStore from 'store/configureStore'
@@ -24,8 +25,12 @@ store.subscribe(throttle(() => {
 }, 1000))
 
 // Fetch the collections
-store.dispatch(fetchFlavours())
-store.dispatch(fetchToppings())
+const horizon = Horizon({ host: 'localhost:8181' })
+horizon.onReady(() => {
+  store.dispatch(fetchFlavours(horizon))
+  store.dispatch(fetchToppings(horizon))
+})
+horizon.connect()
 
 // Sets the window width and watches for changes
 store.dispatch(setWindowWidth(window.innerWidth))
