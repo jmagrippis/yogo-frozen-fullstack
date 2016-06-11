@@ -4,7 +4,11 @@
   "description": "A modest frontend for the Yogo Frozen website, aimed to be served via Horizon.",
   "main": "index.jsx",
   "scripts": {
-    "start": "webpack-dev-server",
+    "serve:rethinkdb": "./rethinkdb_dev/start.sh",
+    "serve:hz-dev": "horizon serve --dev",
+    "serve:dev": "webpack-dev-server",
+    "db:cleanup": "./rethinkdb_dev/cleanup.sh",
+    "db:admin": "./rethinkdb_dev/interface.sh",
     "test": "standard && env NODE_PATH=$NODE_PATH:$PWD/src mocha --compilers js:babel-core/register --require ./test/.setup.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch --watch-extensions jsx",
     "build": "NODE_ENV=production webpack -p"
@@ -42,6 +46,7 @@
     "chai-immutable": "^1.0.0",
     "css-loader": "^0.23.0",
     "enzyme": "^2.0.0",
+    "horizon": "^1.0.0",
     "jsdom": "^9.0.0",
     "mocha": "^2.0.0",
     "react-addons-test-utils": "^15.0.0",
