@@ -3,3 +3,4 @@
 /rethinkdb_dev/data/*
 !**/.gitkeep
 .hz/config.toml
+/keys

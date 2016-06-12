@@ -5,13 +5,17 @@ import ConnectedApp from 'containers/ConnectedApp'
 
 export default class Root extends Component {
   render () {
-    const { store } = this.props
+    const { store, authenticated, login } = this.props
     return (
-      <Provider store={store}>
+      <Provider store={store} authenticated={authenticated} login={login}>
         <ConnectedApp />
       </Provider>
     )
   }
 }
 
-Root.propTypes = { store: PropTypes.object }
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+  authenticated: PropTypes.bool,
+  login: PropTypes.func.isRequired
+}

@@ -6,11 +6,11 @@ import DevTools from 'layouts/DevTools'
 
 export default class Root extends Component {
   render () {
-    const { store } = this.props
+    const { store, authenticated, login } = this.props
     return (
       <Provider store={store}>
         <div>
-          <ConnectedApp />
+          <ConnectedApp authenticated={authenticated} login={login} />
           <DevTools />
         </div>
       </Provider>
@@ -18,4 +18,8 @@ export default class Root extends Component {
   }
 }
 
-Root.propTypes = { store: PropTypes.object.isRequired }
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+  authenticated: PropTypes.bool,
+  login: PropTypes.func.isRequired
+}

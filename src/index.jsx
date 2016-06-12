@@ -10,6 +10,7 @@ import 'normalize.css'
 import configureStore from 'store/configureStore'
 import Root from 'layouts/Root'
 import { loadState, saveState } from 'utilities/localStorage'
+import { login } from 'utilities/auth'
 import { isFetching, isStale } from 'reducers/api'
 import { fetchFlavours } from 'reducers/flavours'
 import { fetchToppings } from 'reducers/toppings'
@@ -19,6 +20,7 @@ import 'styles/main.css'
 injectTapEventPlugin()
 
 const store = configureStore(loadState())
+// Cache some of our app's state
 store.subscribe(throttle(() => {
   saveState({
     locale: store.getState().locale,
@@ -26,9 +28,11 @@ store.subscribe(throttle(() => {
   })
 }, 1000))
 
-// Fetch the collections
+// Horizon connection
 const horizon = Horizon({ host: 'localhost:8181' })
+
 horizon.onReady(() => {
+  // Fetch the Collections
   if (store.getState().api.flavours.count() < 1 || isStale(store.getState().api, 'flavours')) {
     store.dispatch(fetchFlavours(horizon))
   }
@@ -46,7 +50,7 @@ window.addEventListener('resize', throttle(() => {
 
 render(
   <AppContainer>
-    <Root store={store} />
+    <Root store={store} authenticated={horizon.hasAuthToken()} login={() => login(horizon, 'facebook')} />
   </AppContainer>,
   document.getElementById('app')
 )
@@ -56,7 +60,7 @@ if (module.hot) {
     const NextRoot = require('layouts/Root').default
     render(
       <AppContainer>
-        <NextRoot store={store} />
+        <NextRoot store={store} authenticated={horizon.hasAuthToken()} login={() => login(horizon, 'facebook')} />
       </AppContainer>,
     document.getElementById('app')
     )

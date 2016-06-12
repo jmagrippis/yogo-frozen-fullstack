@@ -59,7 +59,7 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   render () {
-    let { changeLanguage, locale, windowWidth } = this.props
+    let { authenticated, login, changeLanguage, locale, windowWidth } = this.props
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
@@ -68,30 +68,22 @@ class App extends Component {
       zoom: 18
     }
     let heroData = hero['content_' + locale]
-    let tickerData = ticker['content_' + locale]
+    let tickerData = authenticated ? ticker.authenticated['content_' + locale] : ticker.guest['content_' + locale]
+    tickerData.login = authenticated ? () => console.log('awesome!') : login
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
           <ConnectedHeader brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} windowWidth={windowWidth} />
           <section className={css(styles.hero)}>
-            <Hero
-              title={heroData.title}
-              body={heroData.body}
-              cta={heroData.cta}
-              target={'#pick'}
-            />
+            <Hero {...heroData} target={'#pick'} />
           </section>
           <ConnectedMakeYourFroyo locale={locale} windowWidth={windowWidth} />
           <section id='location'>
             <ShopMap className={css(styles.map)} {...mapData} />
           </section>
           <section id='contests'>
-            <Ticker
-              body={tickerData.body}
-              cta={tickerData.cta}
-              login={() => console.log('Logging you through Facebook...')}
-            />
+            <Ticker {...tickerData} />
           </section>
           <Footer locale={locale} />
         </div>
@@ -101,6 +93,8 @@ class App extends Component {
 }
 
 App.PropTypes = {
+  authenticated: PropTypes.bool,
+  login: PropTypes.func.isRequired,
   changeLanguage: PropTypes.func.isRequired,
   locale: PropTypes.string,
   windowWidth: PropTypes.number.isRequired
