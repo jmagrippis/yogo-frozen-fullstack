@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import IconButton from 'material-ui/IconButton'
 
-import HeaderResponsiveLinks from 'components/HeaderResponsiveLinks'
+import HeaderResponsiveLinks from 'components/Header/HeaderResponsiveLinks'
 
 describe('(Component) HeaderResponsiveLinks', () => {
   it('should exist with an Icon Button', () => {

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import FlatButton from 'material-ui/FlatButton'
 
-import HeaderLinks from 'components/HeaderLinks'
+import HeaderLinks from 'components/Header/HeaderLinks'
 
 describe('(Component) HeaderLinks', () => {
   it('renders the change language FlatButton even without links', () => {

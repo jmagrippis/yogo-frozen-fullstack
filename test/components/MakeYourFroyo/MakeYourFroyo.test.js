@@ -2,7 +2,7 @@
 // import { expect } from 'chai'
 // import { shallow } from 'enzyme'
 //
-// import MakeYourFroyo from 'components/MakeYourFroyo'
+// import MakeYourFroyo from 'components/MakeYourFroyo/MakeYourFroyo'
 //
 // describe('(Component) MakeYourFroyo', () => {
 //   it('should exist', () => {

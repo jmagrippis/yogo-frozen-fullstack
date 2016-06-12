@@ -5,7 +5,7 @@ import sinon from 'sinon'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 
-import VotingActions from 'components/VotingActions'
+import VotingActions from 'components/MakeYourFroyo/VotingActions'
 
 describe('(Component) VotingActions', () => {
   it('should consist of a FlatButton and a RaisedButton', () => {

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import { OrderedMap } from 'immutable'
 
-import SelectToppings from 'components/SelectToppings'
+import SelectToppings from 'components/MakeYourFroyo/SelectToppings'
 
 describe('(Component) SelectToppings', () => {
   it('should exist', () => {

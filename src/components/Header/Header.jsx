@@ -6,8 +6,8 @@ import IconButton from 'material-ui/IconButton'
 import Inbox from 'material-ui/svg-icons/content/inbox'
 import { darkWhite, lightWhite } from 'material-ui/styles/colors'
 
-import HeaderLinks from 'components/HeaderLinks'
-import HeaderResponsiveLinks from 'components/HeaderResponsiveLinks'
+import HeaderLinks from 'components/Header/HeaderLinks'
+import HeaderResponsiveLinks from 'components/Header/HeaderResponsiveLinks'
 import navLinks from 'localization/navLinks'
 import getLocalized from 'localization/getLocalized'
 

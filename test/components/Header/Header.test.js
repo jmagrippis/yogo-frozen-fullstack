@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import AppBar from 'material-ui/AppBar'
 
-import Header from 'components/Header'
+import Header from 'components/Header/Header'
 
 describe('(Component) Header', () => {
   it('should print out the given brand name as the title of the AppBar', () => {

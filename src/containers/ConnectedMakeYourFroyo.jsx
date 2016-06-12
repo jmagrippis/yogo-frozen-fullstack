@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import MakeYourFroyo from 'components/MakeYourFroyo'
+import MakeYourFroyo from 'components/MakeYourFroyo/MakeYourFroyo'
 import { nextStep, prevStep, setFlavour, toggleTopping } from 'reducers/voting'
 
 const mapStateToProps = (state) => ({

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import { OrderedMap } from 'immutable'
 
-import SelectFlavour from 'components/SelectFlavour'
+import SelectFlavour from 'components/MakeYourFroyo/SelectFlavour'
 
 describe('(Component) SelectFlavour', () => {
   it('should exist', () => {

@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 
-import VoteIncentive from 'components/VoteIncentive'
+import VoteIncentive from 'components/MakeYourFroyo/VoteIncentive'
 
 describe('(Component) VoteIncentive', () => {
   it('should exist with three paragraphs', () => {
