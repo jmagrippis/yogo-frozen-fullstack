@@ -63,7 +63,7 @@ class App extends Component {
     let mapData = {
       center: { lat: 37.975874, lng: 22.978 },
       markers: [
-        { position: { lat: 37.975874, lng: 22.9772 }, icon: 'froyo.png' }
+        { position: { lat: 37.975874, lng: 22.9772 }, icon: 'froyo@32.png' }
       ],
       zoom: 18
     }
