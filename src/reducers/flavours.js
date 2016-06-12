@@ -30,15 +30,16 @@ export const setFlavours = (flavours) => ({
   flavours
 })
 
+// Helper Methods
+export const addFlavour = (flavours, flavour) => flavours.set(flavour.id, new Flavour(flavour))
+
 // Reducer
 export const defaultState = OrderedMap()
 
 export default function (state = defaultState, action) {
   switch (action.type) {
     case SET_FLAVOURS:
-      return action.flavours.reduce((r, flavour) => {
-        return r.set(flavour.id, new Flavour(flavour))
-      }, OrderedMap())
+      return action.flavours.reduce(addFlavour, OrderedMap())
     default:
       return state
   }

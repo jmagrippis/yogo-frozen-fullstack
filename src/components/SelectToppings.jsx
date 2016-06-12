@@ -3,6 +3,20 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Checkbox from 'material-ui/Checkbox'
 import ActionFavorite from 'material-ui/svg-icons/action/favorite'
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
+import { StyleSheet, css } from 'aphrodite'
+
+const styles = StyleSheet.create({
+  containerWrapping: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
+  },
+  topping: {
+    width: 'auto',
+    margin: '.5rem .25rem'
+  }
+})
 
 class SelectToppings extends React.Component {
   constructor (props) {
@@ -15,9 +29,10 @@ class SelectToppings extends React.Component {
     return (
       <div className={className}>
         <p style={{ textAlign: 'center' }}><strong style={{ textTransform: 'capitalize' }}>{selectedFlavour}</strong>{locale === 'en' ? '?' : ';'} <i>{intro}</i></p>
-        <div>
+        <div className={css(styles.containerWrapping)}>
           {toppings.valueSeq().map(topping => (
             <Checkbox
+              className={css(styles.topping)}
               key={topping.get('id')}
               checked={selectedIds.has(topping.get('id'))}
               onCheck={() => toggleTopping(topping.get('id'))}

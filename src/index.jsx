@@ -10,6 +10,7 @@ import 'normalize.css'
 import configureStore from 'store/configureStore'
 import Root from 'layouts/Root'
 import { loadState, saveState } from 'utilities/localStorage'
+import { isFetching, isStale } from 'reducers/api'
 import { fetchFlavours } from 'reducers/flavours'
 import { fetchToppings } from 'reducers/toppings'
 import { setWindowWidth } from 'reducers/windowWidth'
@@ -20,15 +21,20 @@ injectTapEventPlugin()
 const store = configureStore(loadState())
 store.subscribe(throttle(() => {
   saveState({
-    locale: store.getState().locale
+    locale: store.getState().locale,
+    api: isFetching(store.getState().api) ? undefined : store.getState().api
   })
 }, 1000))
 
 // Fetch the collections
 const horizon = Horizon({ host: 'localhost:8181' })
 horizon.onReady(() => {
-  store.dispatch(fetchFlavours(horizon))
-  store.dispatch(fetchToppings(horizon))
+  if (isStale(store.getState().api, 'flavours')) {
+    store.dispatch(fetchFlavours(horizon))
+  }
+  if (isStale(store.getState().api, 'toppings')) {
+    store.dispatch(fetchToppings(horizon))
+  }
 })
 horizon.connect()
 

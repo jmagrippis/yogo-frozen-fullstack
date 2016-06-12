@@ -33,12 +33,13 @@ export const setToppings = (toppings) => ({
 // Reducer
 export const defaultState = OrderedMap()
 
+// Helper Methods
+export const addTopping = (toppings, topping) => toppings.set(topping.id, new Topping(topping))
+
 export default function (state = defaultState, action) {
   switch (action.type) {
     case SET_TOPPINGS:
-      return action.toppings.reduce((r, topping) => {
-        return r.set(topping.id, new Topping(topping))
-      }, OrderedMap())
+      return action.toppings.reduce(addTopping, OrderedMap())
     default:
       return state
   }
