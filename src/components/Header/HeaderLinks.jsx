@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import FlatButton from 'material-ui/FlatButton'
-import { darkWhite } from 'material-ui/styles/colors'
+import { white } from 'material-ui/styles/colors'
 
 const labelStyle = {
-  color: darkWhite,
+  color: white,
   fontSize: '1.125rem',
   textTransform: 'none'
 }

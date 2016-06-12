@@ -12,8 +12,10 @@ import ConnectedHeader from 'containers/ConnectedHeader'
 import Hero from 'components/Hero'
 import ConnectedMakeYourFroyo from 'containers/ConnectedMakeYourFroyo'
 import ShopMap from 'components/ShopMap'
+import Ticker from 'components/Ticker'
 import Footer from 'components/Footer'
 import hero from 'localization/hero'
+import ticker from 'localization/ticker'
 
 const fontFamily = '"Fira Sans", -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", "segoe ui", arial, sans-serif'
 const styles = StyleSheet.create({
@@ -66,6 +68,7 @@ class App extends Component {
       zoom: 18
     }
     let heroData = hero['content_' + locale]
+    let tickerData = ticker['content_' + locale]
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -82,6 +85,13 @@ class App extends Component {
           <ConnectedMakeYourFroyo locale={locale} windowWidth={windowWidth} />
           <section id='location'>
             <ShopMap className={css(styles.map)} {...mapData} />
+          </section>
+          <section id='contests'>
+            <Ticker
+              body={tickerData.body}
+              cta={tickerData.cta}
+              login={() => console.log('Logging you through Facebook...')}
+            />
           </section>
           <Footer locale={locale} />
         </div>

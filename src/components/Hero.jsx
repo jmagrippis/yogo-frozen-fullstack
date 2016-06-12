@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { StyleSheet, css } from 'aphrodite'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
-import { darkWhite } from 'material-ui/styles/colors'
+import { white } from 'material-ui/styles/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '1rem 2rem',
-    color: darkWhite,
+    color: white,
     fontSize: '1.5rem',
     textAlign: 'center'
   },

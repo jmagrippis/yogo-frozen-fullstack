@@ -4,7 +4,7 @@ import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
-import { darkWhite } from 'material-ui/styles/colors'
+import { white } from 'material-ui/styles/colors'
 
 class HeaderResponsiveLinks extends React.Component {
   constructor (props) {
@@ -17,7 +17,7 @@ class HeaderResponsiveLinks extends React.Component {
     let langLabel = locale === 'en' ? 'Ελληνικά' : 'English'
     return (
       <div className={className}>
-        <IconButton onTouchTap={toggleOpen}><NavigationMenu color={darkWhite} /></IconButton>
+        <IconButton onTouchTap={toggleOpen}><NavigationMenu color={white} /></IconButton>
         <Drawer
           docked={false}
           width={200}
