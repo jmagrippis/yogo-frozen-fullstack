@@ -15,6 +15,11 @@ class HeaderResponsiveLinks extends React.Component {
   render () {
     let { className, locale, links, open, toggleOpen, changeLanguage } = this.props
     let langLabel = locale === 'en' ? 'Ελληνικά' : 'English'
+    let scroll = (location) => {
+      let el = document.getElementById(location)
+      if (!el) return
+      el.scrollIntoView()
+    }
     return (
       <div className={className}>
         <IconButton onTouchTap={toggleOpen}><NavigationMenu color={white} /></IconButton>
@@ -26,7 +31,7 @@ class HeaderResponsiveLinks extends React.Component {
           openSecondary
         >
           {links.map((link, key) => (
-            <MenuItem key={key} onTouchTap={() => { document.getElementById(link.location) && document.getElementById(link.location).scrollIntoView() }}>{link.label}</MenuItem>
+            <MenuItem key={key} onTouchTap={() => { scroll(link.location) }}>{link.label}</MenuItem>
           ))}
           <MenuItem key='language' onTouchTap={() => changeLanguage(locale)}>{'<' + langLabel + '>'}</MenuItem>
         </Drawer>

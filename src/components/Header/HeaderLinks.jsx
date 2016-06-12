@@ -18,10 +18,15 @@ class HeaderLinks extends React.Component {
   render () {
     let { className, links, locale, changeLanguage } = this.props
     let langLabel = locale === 'en' ? 'Ελληνικά' : 'English'
+    let scroll = (location) => {
+      let el = document.getElementById(location)
+      if (!el) return
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
     return (
       <ul className={className}>
         {links.map((link, key) => (
-          <li key={key}><FlatButton labelStyle={labelStyle} linkButton href={'#' + link.location} label={link.label} /></li>
+          <li key={key}><FlatButton labelStyle={labelStyle} onTouchTap={() => { scroll(link.location) }} label={link.label} /></li>
         ))}
         <li key='languages'><FlatButton labelStyle={labelStyle} label={'<' + langLabel + '>'} onTouchTap={() => { changeLanguage(locale) }} /></li>
       </ul>
