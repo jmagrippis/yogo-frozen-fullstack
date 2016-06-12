@@ -4,7 +4,7 @@
   "description": "A modest frontend for the Yogo Frozen website, aimed to be served via Horizon.",
   "main": "index.jsx",
   "scripts": {
-    "serve:rethinkdb": "./rethinkdb_dev/start.sh",
+    "serve:rethinkdb": "bash ./rethinkdb_dev/start.sh",
     "serve:hz-dev": "horizon serve --dev",
     "serve:dev": "webpack-dev-server",
     "db:cleanup": "./rethinkdb_dev/cleanup.sh",

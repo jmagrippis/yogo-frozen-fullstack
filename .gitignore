@@ -1,6 +1,5 @@
 /dist/bundle.js
 /dist/*.bundle.js
-/rethinkdb_data
 /rethinkdb_dev/data/*
 !**/.gitkeep
 .hz/config.toml
