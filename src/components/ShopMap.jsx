@@ -18,6 +18,7 @@ class ShopMap extends React.Component {
           <GoogleMap
             defaultZoom={zoom}
             defaultCenter={center}
+            options={{ scrollwheel: false }}
           >
             {markers.map((marker, key) => <Marker key={key} {...marker} />)}
           </GoogleMap>
