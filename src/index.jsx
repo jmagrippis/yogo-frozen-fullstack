@@ -29,10 +29,10 @@ store.subscribe(throttle(() => {
 // Fetch the collections
 const horizon = Horizon({ host: 'localhost:8181' })
 horizon.onReady(() => {
-  if (isStale(store.getState().api, 'flavours')) {
+  if (store.getState().api.flavours.count() < 1 || isStale(store.getState().api, 'flavours')) {
     store.dispatch(fetchFlavours(horizon))
   }
-  if (isStale(store.getState().api, 'toppings')) {
+  if (store.getState().api.flavours.count() < 1 || isStale(store.getState().api, 'toppings')) {
     store.dispatch(fetchToppings(horizon))
   }
 })
