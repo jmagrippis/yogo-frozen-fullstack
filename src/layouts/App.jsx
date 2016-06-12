@@ -76,7 +76,7 @@ class App extends Component {
         <div className={css(styles.sansSerif, styles.mainFlexContainer)}>
           <ConnectedHeader brand={'Yogo Frozen'} changeLanguage={changeLanguage} locale={locale} windowWidth={windowWidth} />
           <section className={css(styles.hero)}>
-            <Hero {...heroData} target={'#pick'} />
+            <Hero {...heroData} target={'pick'} />
           </section>
           <ConnectedMakeYourFroyo locale={locale} windowWidth={windowWidth} />
           <section id='location'>

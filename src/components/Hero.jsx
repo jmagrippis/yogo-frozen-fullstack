@@ -5,6 +5,8 @@ import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import { white } from 'material-ui/styles/colors'
 
+import { scroll } from 'utilities/animation'
+
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -37,7 +39,11 @@ class Hero extends React.Component {
         <div className={css(styles.container)}>
           <h1 className={css(styles.title)}>{title}</h1>
           <p className={css(styles.body)}>{body}</p>
-          <RaisedButton primary labelStyle={{ fontSize: '1.25rem', padding: '0.5rem 2rem' }} label={cta} linkButton href={target} />
+          <RaisedButton
+            primary
+            labelStyle={{ fontSize: '1.25rem', padding: '0.5rem 2rem' }}
+            label={cta}
+            onTouchTap={() => scroll(target)} />
         </div>
       </Paper>
     )

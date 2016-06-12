@@ -3,6 +3,8 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import FlatButton from 'material-ui/FlatButton'
 import { white } from 'material-ui/styles/colors'
 
+import { scroll } from 'utilities/animation'
+
 const labelStyle = {
   color: white,
   fontSize: '1.125rem',
@@ -18,11 +20,7 @@ class HeaderLinks extends React.Component {
   render () {
     let { className, links, locale, changeLanguage } = this.props
     let langLabel = locale === 'en' ? 'Ελληνικά' : 'English'
-    let scroll = (location) => {
-      let el = document.getElementById(location)
-      if (!el) return
-      el.scrollIntoView({ behavior: 'smooth' })
-    }
+
     return (
       <ul className={className}>
         {links.map((link, key) => (
