@@ -29,7 +29,7 @@ store.subscribe(throttle(() => {
 }, 1000))
 
 // Horizon connection
-const horizon = Horizon({ host: 'localhost:8181' })
+const horizon = Horizon({ host: module.hot ? 'localhost:8181' : window.location })
 
 horizon.onReady(() => {
   // Fetch the Collections

@@ -6,7 +6,7 @@ if [ $? -eq 1 ]; then
   docker run --name yogo-rethink -p 8888:8080 -p 28015:28015 -p 29015:29015 \
     -v "$PWD/rethinkdb_dev/data:/data/rethinkdb_data" \
     -d rethinkdb rethinkdb --bind all -n yogofrozen \
-    && echo "Createad and started."
+    && echo "Created and started."
   exit 0
 fi
 
