@@ -12,7 +12,9 @@ describe('(Component) Header', () => {
       brand: 'Test Co.',
       links: [],
       locale: 'en',
-      changeLanguage: sinon.stub
+      changeLanguage: sinon.stub,
+      toggleSidebar: sinon.stub,
+      windowWidth: 1280
     }
     let wrapper = shallow(<Header {...data} />)
     expect(wrapper.find(AppBar).props().title.props.children).to.equal(data.brand)
