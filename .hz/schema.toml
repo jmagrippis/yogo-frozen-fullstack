@@ -1,0 +1,28 @@
+# This is a TOML document
+
+###############################################################################
+# Permissions
+# Defines which groups and types of users are allowed to do what with our data.
+#------------------------------------------------------------------------------
+
+[collections.toppings]
+indexes = ["ordering"]
+
+[collections.flavours]
+indexes = ["ordering"]
+
+[groups.default]
+[groups.default.rules.readFlavours]
+template = "collection('flavours').anyRead()"
+[groups.default.rules.readToppings]
+template = "collection('toppings').anyRead()"
+
+[groups.authenticated]
+[groups.authenticated.rules.readFlavours]
+template = "collection('flavours').anyRead()"
+[groups.authenticated.rules.readToppings]
+template = "collection('toppings').anyRead()"
+
+[groups.admin]
+[groups.admin.rules.carte_blanche]
+template = "any()"
