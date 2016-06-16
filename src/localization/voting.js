@@ -47,12 +47,12 @@ const votingIntro = {
   content_en: [
     'The last and definitely most important step, is to enjoy your tasty creation.',
     'It is also the easiest step! Who wouldn\'t enjoy a fresh froyo',
-    'If you are satisfied with your picks and are wondering what the most popular ones are, vote! Prizes await each month\'s luckiest participants!'
+    'If you are satisfied with your picks and are wondering what the most popular ones are, vote!'
   ],
   content_el: [
     'Το τελευταίο και πιο σημαντικό βήμα είναι να απολαύσεις τη δημιουργία σου.',
     'Ταυτόχρονα είναι και το πιο εύκολο! Ποιός δεν θα απολάμβανε ένα φρέσκο παγωμένο γιαούρτι',
-    'Έαν είσαι ευχαριστημένος από τις επιλογές σου και αναρωτιέσαι ποιές είναι οι πιο δημοφιλής, ψήφισε! Πλούσια δώρα περιμένουν τους πιο τυχερούς συμμετέχοντες του μήνα!'
+    'Έαν είσαι ευχαριστημένος από τις επιλογές σου και αναρωτιέσαι ποιές είναι οι πιο δημοφιλής, ψήφισε!'
   ]
 }
 
