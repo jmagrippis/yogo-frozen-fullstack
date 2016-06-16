@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
   },
   breath: {
     margin: '0 .5rem'
+  },
+  flex: {
+    flex: '1'
   }
 })
 
@@ -34,7 +37,7 @@ class Ticker extends React.Component {
     return (
       <div className={className ? className + ' ' : '' + css(styles.bg)}>
         <div className={css(styles.container)}>
-          <div className={css(styles.breath)}>{body}</div>
+          <div className={css(styles.breath, styles.flex)}>{body}</div>
           <RaisedButton
             className={css(styles.breath)}
             label={cta}
