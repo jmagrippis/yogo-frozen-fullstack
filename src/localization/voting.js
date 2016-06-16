@@ -34,13 +34,13 @@ const buttons = {
 }
 
 const flavourIntro = {
-  content_en: 'It all starts with a solid base! From plain classic, to extravagant mango, you can rest assured you will always be getting fresh, pure, Greek yoghurt.',
-  content_el: 'Όλα ξεκινούν απο μία σταθερή βάση! Από απλή κλασσική σε πολυτελής μάνγκο, το σίγουρο είναι ότι πάντα θα παίρνεις φρέσκο, καθαρό, Ελληνικό γιαούρτι.'
+  content_en: 'It all starts with a solid base! From plain classic, to special cranberry, you can rest assured you will always be getting fresh, pure, Greek yoghurt.',
+  content_el: 'Όλα ξεκινούν απο μία σταθερή βάση! Από απλή κλασσική σε ιδιαίτερο cranberry, το σίγουρο είναι ότι πάντα θα παίρνεις φρέσκο, καθαρό, Ελληνικό γιαούρτι.'
 }
 
 const toppingsIntro = {
-  content_en: 'Perfect! Next step is to add as many of our delicious toppings as your heart desires!',
-  content_el: 'Τέλεια! Το επόμενο βήμα είναι να προσθέσεις όσα από τα πεντανόστιμά μας toppings τραβάει η καρδιά σου!'
+  content_en: 'Perfect! Next step is to add as many of our delicious toppings as your heart desires! With our healthy 2% fat milk backing you all the way, you can afford the treat without hampering your diet.',
+  content_el: 'Τέλεια! Το επόμενο βήμα είναι να προσθέσεις όσα από τα πεντανόστιμά μας toppings τραβάει η καρδιά σου! Με το υγιέστατο γάλα μας 2% λιπαρών να σε στηρίζει, σε παίρνει να βάλεις μια λιχουδιά ακόμα, χωρίς να πάει πίσω η διατροφή σου.'
 }
 
 const votingIntro = {

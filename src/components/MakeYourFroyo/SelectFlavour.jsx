@@ -25,6 +25,7 @@ class SelectFlavour extends React.Component {
               key={flavour.get('id')}
               value={flavour.get('id')}
               label={flavour.get('name_' + locale)}
+              labelStyle={{ width: '100%' }}
               checkedIcon={<ActionFavorite />}
               uncheckedIcon={<ActionFavoriteBorder />}
             />
