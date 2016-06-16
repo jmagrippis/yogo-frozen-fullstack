@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](./LICENSE)
 
 
-A modest web app for the Yogo Frozen website, aimed to be served via [Horizon].
+A modest web app for the [Yogo Frozen website], aimed to be served via [Horizon].
 
 ## Technology used
 
@@ -56,6 +56,7 @@ This is open-sourced in hopes of inspiring somebody, somewhere... even nudging t
 
 It is *not* intended to be hastily re-skinned and sold as a full-blown marketing site. But, hey, if you want to be that guy, there is only your conscience stopping you.
 
+[Yogo Frozen website]: https://yogofrozen.gr "Fresh, healthy, 100% Greek yoghurt"
 [Horizon]: http://horizon.io/ "The realtime JavaScript backend"
 [RethinkDB]: https://www.rethinkdb.com/ "The open-source database for the realtime web"
 [React]: https://facebook.github.io/react/ "A Javacript library for building UI"

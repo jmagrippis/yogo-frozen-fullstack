@@ -12,22 +12,34 @@ const flavours = [
     'ordering': 2
   },
   {
-    'colour': '#710020',
-    'name_el': 'cranberry',
-    'name_en': 'cranberry',
+    'colour': '#F3E5AB',
+    'name_el': 'βανίλια',
+    'name_en': 'vanilla',
     'ordering': 3
   },
   {
     'colour': '#F3E5AB',
-    'name_el': 'βανίλια',
-    'name_en': 'vanilla',
+    'name_el': 'kinder bueno',
+    'name_en': 'kinder bueno',
     'ordering': 4
   },
   {
-    'colour': '#4E2E28',
-    'name_el': 'σοκολάτα',
-    'name_en': 'chocolate',
+    'colour': '#CC9966',
+    'name_el': 'καραμέλα',
+    'name_en': 'caramel',
     'ordering': 5
+  },
+  {
+    'colour': '#EFCCA2',
+    'name_el': 'μπισκότο',
+    'name_en': 'cookie',
+    'ordering': 6
+  },
+  {
+    'colour': '#4FFE135',
+    'name_el': 'μπανάνα',
+    'name_en': 'banana',
+    'ordering': 7
   }
 ]
 
