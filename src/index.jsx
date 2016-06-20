@@ -29,7 +29,7 @@ store.subscribe(throttle(() => {
 }, 1000))
 
 // Horizon connection
-const horizon = Horizon(module.hot ? { host: 'localhost:8181' } : {})
+const horizon = Horizon({ host: process.env.NODE_ENV === 'production' ? 'yogofrozen.gr:8181' : 'localhost:8181' })
 
 horizon.onReady(() => {
   // Fetch the Collections
